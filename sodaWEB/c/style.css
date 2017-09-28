@@ -1,0 +1,114 @@
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:#ffffff;
+}
+#map{
+    width:80%;
+    height:100%;
+    float: left;
+}
+#panel {
+    position: absolute;
+    top:30px;
+    left:10px;
+    z-index: 999;
+    color: #fff;
+}
+#login{
+    position:absolute;
+    width:300px;
+    height:40px;
+    left:50%;
+    top:50%;
+    margin:-40px 0 0 -150px;
+}
+#login input[type=password]{
+    width:200px;
+    height:30px;
+    padding:3px;
+    line-height:30px;
+    border:1px solid #000;
+}
+#login input[type=submit]{
+    width:80px;
+    height:38px;
+    display:inline-block;
+    line-height:38px;
+}
+.rightList{
+    float: right;
+    width: 20%;
+}
+.rightBtn{
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+    border: 3px solid #FFF;
+    outline: none;
+    font-size: 16px;
+    border-radius: 0 0 4px 4px;
+    background: royalblue;
+    color: white;
+}
+.rightChildList{
+    width: 80%;
+    float: right;
+}
+.rightChildBtn{
+    padding: 0 20px;
+    width: 100%;
+    height: 35px;
+    border: 1px solid #FFF;
+    outline: none;
+    font-size: 16px;
+    border-radius: 0 0 4px 4px;
+    color: white;
+}
+.phold5{
+    height: 5px;
+}
+.phold10{
+    height: 10px;
+}
+.phold20{
+    height: 20px;
+}
+.phold30{
+    height: 30px;
+}
+.phold40{
+    height: 40px;
+}
+.greenG{
+    color: black;
+    background: linear-gradient(to right,rgba(0,255,0,0.1), rgba(0,255,0,0.5), rgba(0,255,0,1));
+}
+.yellowG{
+    color: black;
+    background: linear-gradient(to right,rgba(197, 224, 87, 0.3), rgba(241, 212, 7, 0.5), rgba(2550,255,0,1));
+}
+.redG{
+    color: black;
+    background: linear-gradient(to right,rgba(236, 151, 23, 0.4), rgba(230, 58, 58,0.7), rgba(255, 0, 0, 1));
+}
+.colorschemebox{padding:10px; height: auto; width:95% !important;}
+.colorscheme{
+width:30px; height:30px; 
+margin-left:5px; margin-top:4px;
+border: 3px solid #FFF;  
+}
+#pal1{background-color:#008000;}
+#pal2{background-color:#4B0082;}
+#pal3{background-color:#ADD8E6;}
+#pal4{background-color:#F50808;}
+#pal5{background-color:#00FFFF;}
+#pal6{background-color:#FFFF00;}
+#pal7{background-color:#4B1213;}
+#pal8{background-color:#000080;}
+#pal9{background-color:#FF8C00;}
+#pal10{background-color:#D2B48C;}
+#pal11{background-color:#7FFF00;}
+#pal12{background-color: #000000;}
+
