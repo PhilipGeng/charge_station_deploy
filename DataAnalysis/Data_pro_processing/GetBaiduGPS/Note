@@ -1,0 +1,2 @@
+getBaiduGPS.py
+Transfer local GPS into Baidu GPS and write it into the database.
