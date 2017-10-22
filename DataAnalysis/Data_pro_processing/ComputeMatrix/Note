@@ -1,0 +1,4 @@
+generate_park_matrix.py
+generate_station_matrix.py
+Are used for calculating matrix of park and station.
+The matrix contains 48 cols of occupancy info.
