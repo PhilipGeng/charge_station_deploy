@@ -7,7 +7,9 @@ import os.path
 import os
 import time
 from random import randint
+import socket
 
+socket.setdefaulttimeout(2*60) # wait for maximum two miniutes for downloading the file
 PROXY_FILE = './proxies.csv'
 
 with open(PROXY_FILE) as input_proxy_file:
@@ -23,9 +25,12 @@ while(True):
 	time_str = currentTime.strftime("%Y-%m-%d-%H-%M-%S")
 	print("crawl {}...".format(time_str))
 	for province in province_list:
-		for proxy_url in proxy_list:
+		# for proxy_url in proxy_list:
+		while(True):
 			try:
-				print("try proxy {} ...".format(proxy_url))
+				# print("try downlaod {} ...".format(proxy_url))
+				proxy_url = 'no'
+				print("downloading....")
 				if proxy_url != 'no':
 					# create the object, assign it to a variable
 					proxy = urlrequest.ProxyHandler({'https': proxy_url})
@@ -45,7 +50,8 @@ while(True):
 				currentTime = datetime.now()
 				time_str = currentTime.strftime("%Y-%m-%d-%H-%M-%S")
 				urlrequest.urlretrieve(country_all_url,"./{}/{}.json".format(province, time_str))
-				time.sleep(randint(15,30))
+				time.sleep(randint(20,30))
 				break
 			except:
-				print("try another proxy...")
+				print("exception, wait 10 miinutes, and try again...")
+				time.sleep(10*60)
