@@ -28,7 +28,7 @@ while(True):
 	for province in province_list:
 		# for proxy_url in proxy_list:
 		while(True):
-			# try:
+			try:
 				# print("try downlaod {} ...".format(proxy_url))
 				proxy_url = 'no'
 				print("downloading....")
@@ -72,6 +72,6 @@ while(True):
 					
 				time.sleep(randint(20,30))
 				break
-			# except:
-			# 	print("exception, wait 10 miinutes, and try again...")
-			# 	time.sleep(10*60)
+			except:
+				print("exception, wait 10 miinutes, and try again...")
+				time.sleep(10*60)
