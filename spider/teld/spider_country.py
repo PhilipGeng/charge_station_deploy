@@ -49,7 +49,7 @@ while(True):
 				if not os.path.exists(directory):
 					os.makedirs(directory)
 				
-				filter_str = '{"ProvinceName":"北京市","' + province + '":"","RegionName":"","KeyWord":"","Visible":"1","page":1,"rows":10,"Type":"","StaOpState":"3"}'
+				filter_str = '{"ProvinceName":"' + province + '","RegionName":"","KeyWord":"","Visible":"1","page":1,"rows":10,"Type":"","StaOpState":"3"}'
 				params = urllib.parse.urlencode({'SID':'CSM-GetStationInfoByFilter', 'filter': filter_str})
 				country_all_url = "https://csm.teld.cn/api/invoke?"+params
 				currentTime = datetime.now()
