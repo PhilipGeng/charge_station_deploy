@@ -9,7 +9,9 @@ import time
 from random import randint
 import socket
 import json
+import ssl
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 socket.setdefaulttimeout(2*60) # wait for maximum two miniutes for downloading the file
 PROXY_FILE = './proxies.csv'
@@ -70,9 +72,9 @@ while(True):
 					free_pile_file = "{}/{}_free_pile.json".format(directory, time_str)
 					urlrequest.urlretrieve(free_pile_url, free_pile_file, data=post_data)
 
-					
 				time.sleep(randint(20,30))
 				break
-			except:
+			except Exception as e:
+				print(e)
 				print("exception, wait 10 miinutes, and try again...")
 				time.sleep(10*60)
