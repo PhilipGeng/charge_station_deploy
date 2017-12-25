@@ -10,6 +10,7 @@ from random import randint
 import socket
 import json
 
+
 socket.setdefaulttimeout(2*60) # wait for maximum two miniutes for downloading the file
 PROXY_FILE = './proxies.csv'
 
