@@ -17,7 +17,7 @@ socket.setdefaulttimeout(2*60) # wait for maximum two miniutes for downloading t
 PROXY_FILE = './proxies.csv'
 
 with open(PROXY_FILE) as input_proxy_file:
-    proxy_list = ['no']
+    proxy_list = []
     for line in input_proxy_file:
         proxy_ip, proxy_port = line.split('\t')
         proxy_list.append("{}:{}".format(proxy_ip, proxy_port))
@@ -28,13 +28,11 @@ while(True):
 	currentTime = datetime.now()
 	time_str = currentTime.strftime("%Y-%m-%d-%H-%M-%S")
 	print("crawl {}...".format(time_str))
+	
 	for province in province_list:
-		# for proxy_url in proxy_list:
-		while(True):
+		for proxy_url in proxy_list:
 			try:
-				# print("try downlaod {} ...".format(proxy_url))
-				proxy_url = 'no'
-				print("downloading....")
+				print("try downlaod {} ...".format(proxy_url))
 				if proxy_url != 'no':
 					# create the object, assign it to a variable
 					proxy = urlrequest.ProxyHandler({'https': proxy_url})
@@ -53,14 +51,14 @@ while(True):
 					os.makedirs(directory)
 				
 				filter_str = '{"ProvinceName":"' + province + '","RegionName":"","KeyWord":"","Visible":"1","page":1,"rows":2000,"Type":"","StaOpState":"3"}'
-				params = urllib.parse.urlencode({'SID':'CSM-GetStationInfoByFilter', 'filter': filter_str})
-				country_all_url = "https://csm.teld.cn/api/invoke?"+params
+				params = urllib.parse.urlencode({'filter': filter_str}).encode('ascii')
+				country_all_url = "https://csm.teld.cn/api/invoke?SID=CSM-GetStationInfoByFilter"
 				currentTime = datetime.now()
 				time_str = currentTime.strftime("%Y-%m-%d-%H-%M-%S")
 				station_file = "{}/{}_station.json".format(directory, time_str)
-				urlrequest.urlretrieve(country_all_url, station_file)
+				urlrequest.urlretrieve(country_all_url, station_file, data=params)
 
-				free_pile_url = "http://ps.teld.cn/api/invoke?SID=CM-GetPileFreeCount"
+				free_pile_url = "https://ps.teld.cn/api/invoke?SID=CM-GetPileFreeCount"
 				with open(station_file, encoding='utf8') as f:
 					station_json = json.load(f, encoding='utf8') # need to load two times to escape extra backslash in json file
 					station_json = json.loads(station_json)
@@ -76,5 +74,5 @@ while(True):
 				break
 			except Exception as e:
 				print(e)
-				print("exception, wait 10 miinutes, and try again...")
-				time.sleep(10*60)
+				print("exception, wait for 1 minute,  try again...")
+				time.sleep(60)
