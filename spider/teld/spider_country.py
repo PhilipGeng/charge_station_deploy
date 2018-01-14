@@ -74,5 +74,4 @@ while(True):
 				break
 			except Exception as e:
 				print(e)
-				print("exception, wait for 1 minute,  try again...")
-				time.sleep(60)
+				print("exception, try again...")
